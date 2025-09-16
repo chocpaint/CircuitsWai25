@@ -30,8 +30,8 @@
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonAnd = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonNOT = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonOR = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonNot = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonOr = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonEXIT = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOUTPUT = new System.Windows.Forms.ToolStripButton();
@@ -54,8 +54,8 @@
             this.toolStripButtonOUTPUT,
             this.toolStripSeparator2,
             this.toolStripButtonAnd,
-            this.toolStripButtonOR,
-            this.toolStripButtonNOT,
+            this.toolStripButtonOr,
+            this.toolStripButtonNot,
             this.toolStripSeparator1,
             this.toolStripButtonCOPY,
             this.toolStripButtonEVALUATE,
@@ -80,24 +80,26 @@
             this.toolStripButtonAnd.Text = "AND Gate";
             this.toolStripButtonAnd.Click += new System.EventHandler(this.toolStripButtonAnd_Click);
             // 
-            // toolStripButtonNOT
+            // toolStripButtonNot
             // 
-            this.toolStripButtonNOT.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonNOT.Image = global::Circuits.Properties.Resources.NotIcon;
-            this.toolStripButtonNOT.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonNOT.Name = "toolStripButtonNOT";
-            this.toolStripButtonNOT.Size = new System.Drawing.Size(23, 25);
-            this.toolStripButtonNOT.Text = "NOT Gate";
-            this.toolStripButtonNOT.ToolTipText = "NOT Gate";
+            this.toolStripButtonNot.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonNot.Image = global::Circuits.Properties.Resources.NotIcon;
+            this.toolStripButtonNot.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonNot.Name = "toolStripButtonNot";
+            this.toolStripButtonNot.Size = new System.Drawing.Size(23, 25);
+            this.toolStripButtonNot.Text = "NOT Gate";
+            this.toolStripButtonNot.ToolTipText = "NOT Gate";
+            this.toolStripButtonNot.Click += new System.EventHandler(this.toolStripButtonNot_Click);
             // 
-            // toolStripButtonOR
+            // toolStripButtonOr
             // 
-            this.toolStripButtonOR.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonOR.Image = global::Circuits.Properties.Resources.OrIcon;
-            this.toolStripButtonOR.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonOR.Name = "toolStripButtonOR";
-            this.toolStripButtonOR.Size = new System.Drawing.Size(23, 25);
-            this.toolStripButtonOR.Text = "OR Gate";
+            this.toolStripButtonOr.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonOr.Image = global::Circuits.Properties.Resources.OrIcon;
+            this.toolStripButtonOr.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonOr.Name = "toolStripButtonOr";
+            this.toolStripButtonOr.Size = new System.Drawing.Size(23, 25);
+            this.toolStripButtonOr.Text = "OR Gate";
+            this.toolStripButtonOr.Click += new System.EventHandler(this.toolStripButtonOr_Click);
             // 
             // toolStripSeparator1
             // 
@@ -214,8 +216,8 @@
 
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonAnd;
-        private System.Windows.Forms.ToolStripButton toolStripButtonOR;
-        private System.Windows.Forms.ToolStripButton toolStripButtonNOT;
+        private System.Windows.Forms.ToolStripButton toolStripButtonOr;
+        private System.Windows.Forms.ToolStripButton toolStripButtonNot;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButtonEXIT;
         private System.Windows.Forms.ToolStripButton toolStripButtonOUTPUT;

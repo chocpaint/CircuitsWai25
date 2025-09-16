@@ -37,7 +37,7 @@ namespace Circuits
         /// <summary>
         /// The set of gates in the circuit
         /// </summary>
-        protected List<AndGate> gatesList = new List<AndGate>();
+        protected List<Elements> gatesList = new List<Elements>();
 
         /// <summary>
         /// The set of connector wires in the circuit
@@ -47,12 +47,12 @@ namespace Circuits
         /// <summary>
         /// The currently selected gate, or null if no gate is selected.
         /// </summary>
-        protected AndGate current = null;
+        protected Elements current = null;
 
         /// <summary>
         /// The new gate that is about to be inserted into the circuit
         /// </summary>
-        protected AndGate newGate = null;
+        protected Elements newGate = null;
 
         public Form1()
         {
@@ -69,7 +69,7 @@ namespace Circuits
         /// <returns>The pin that has been selected</returns>
         public Pin findPin(int x, int y)
         {
-            foreach (AndGate g in gatesList)
+            foreach (Elements g in gatesList)
             {
                 foreach (Pin p in g.Pins)
                 {
@@ -171,6 +171,16 @@ namespace Circuits
             newGate = new AndGate(0, 0);
         }
 
+        private void toolStripButtonOr_Click(object sender, EventArgs e)
+        {
+            newGate = new OrGate(0, 0);
+        }
+
+        private void toolStripButtonNot_Click(object sender, EventArgs e)
+        {
+            newGate = new NotGate(0, 0);
+        }
+
         /// <summary>
         /// Redraws all the graphics for the current circuit.
         /// </summary>
@@ -179,7 +189,7 @@ namespace Circuits
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             //Draw all of the gates
-            foreach (AndGate g in gatesList)
+            foreach (Elements g in gatesList)
             {
                 g.Draw(e.Graphics);
             }
@@ -210,6 +220,8 @@ namespace Circuits
         {
             Application.Exit(); // kill app
         }
+
+        
 
         /// <summary>
         /// Handles events while the mouse button is pressed down.
