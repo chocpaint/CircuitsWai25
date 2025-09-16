@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Circuits
 {
-    internal class Elements
+    public abstract class Elements
     {
 
 
