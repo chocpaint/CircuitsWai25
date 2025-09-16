@@ -221,7 +221,12 @@ namespace Circuits
             Application.Exit(); // kill app
         }
 
-        
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
 
         /// <summary>
         /// Handles events while the mouse button is pressed down.

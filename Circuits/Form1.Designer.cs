@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonAnd = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonNot = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonOr = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonEXIT = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonINPUT = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOUTPUT = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonENDC = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSTARTC = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonEVALUATE = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonAnd = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonOr = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonNot = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonCOPY = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonINPUT = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonEVALUATE = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonSTARTC = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonENDC = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonEXIT = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,54 +70,14 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButtonAnd
+            // toolStripButtonINPUT
             // 
-            this.toolStripButtonAnd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAnd.Image = global::Circuits.Properties.Resources.AndIcon;
-            this.toolStripButtonAnd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAnd.Name = "toolStripButtonAnd";
-            this.toolStripButtonAnd.Size = new System.Drawing.Size(23, 25);
-            this.toolStripButtonAnd.Text = "AND Gate";
-            this.toolStripButtonAnd.Click += new System.EventHandler(this.toolStripButtonAnd_Click);
-            // 
-            // toolStripButtonNot
-            // 
-            this.toolStripButtonNot.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonNot.Image = global::Circuits.Properties.Resources.NotIcon;
-            this.toolStripButtonNot.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonNot.Name = "toolStripButtonNot";
-            this.toolStripButtonNot.Size = new System.Drawing.Size(23, 25);
-            this.toolStripButtonNot.Text = "NOT Gate";
-            this.toolStripButtonNot.ToolTipText = "NOT Gate";
-            this.toolStripButtonNot.Click += new System.EventHandler(this.toolStripButtonNot_Click);
-            // 
-            // toolStripButtonOr
-            // 
-            this.toolStripButtonOr.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonOr.Image = global::Circuits.Properties.Resources.OrIcon;
-            this.toolStripButtonOr.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonOr.Name = "toolStripButtonOr";
-            this.toolStripButtonOr.Size = new System.Drawing.Size(23, 25);
-            this.toolStripButtonOr.Text = "OR Gate";
-            this.toolStripButtonOr.Click += new System.EventHandler(this.toolStripButtonOr_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
-            // 
-            // toolStripButtonEXIT
-            // 
-            this.toolStripButtonEXIT.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonEXIT.BackColor = System.Drawing.Color.Red;
-            this.toolStripButtonEXIT.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonEXIT.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.toolStripButtonEXIT.ForeColor = System.Drawing.Color.Black;
-            this.toolStripButtonEXIT.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonEXIT.Name = "toolStripButtonEXIT";
-            this.toolStripButtonEXIT.Size = new System.Drawing.Size(43, 25);
-            this.toolStripButtonEXIT.Text = "EXIT";
-            this.toolStripButtonEXIT.Click += new System.EventHandler(this.toolStripButtonEXIT_Click);
+            this.toolStripButtonINPUT.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonINPUT.Image = global::Circuits.Properties.Resources.InputIcon;
+            this.toolStripButtonINPUT.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonINPUT.Name = "toolStripButtonINPUT";
+            this.toolStripButtonINPUT.Size = new System.Drawing.Size(23, 25);
+            this.toolStripButtonINPUT.Text = "INPUT";
             // 
             // toolStripButtonOUTPUT
             // 
@@ -134,32 +94,41 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
-            // toolStripButtonENDC
+            // toolStripButtonAnd
             // 
-            this.toolStripButtonENDC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonENDC.Image = global::Circuits.Properties.Resources.EndCompoundIcon;
-            this.toolStripButtonENDC.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonENDC.Name = "toolStripButtonENDC";
-            this.toolStripButtonENDC.Size = new System.Drawing.Size(23, 25);
-            this.toolStripButtonENDC.Text = "END COMPOUND";
+            this.toolStripButtonAnd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAnd.Image = global::Circuits.Properties.Resources.AndIcon;
+            this.toolStripButtonAnd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAnd.Name = "toolStripButtonAnd";
+            this.toolStripButtonAnd.Size = new System.Drawing.Size(23, 25);
+            this.toolStripButtonAnd.Text = "AND Gate";
+            this.toolStripButtonAnd.Click += new System.EventHandler(this.toolStripButtonAnd_Click);
             // 
-            // toolStripButtonSTARTC
+            // toolStripButtonOr
             // 
-            this.toolStripButtonSTARTC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSTARTC.Image = global::Circuits.Properties.Resources.StartCompoundIcon;
-            this.toolStripButtonSTARTC.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSTARTC.Name = "toolStripButtonSTARTC";
-            this.toolStripButtonSTARTC.Size = new System.Drawing.Size(23, 25);
-            this.toolStripButtonSTARTC.Text = "START COMPOUND";
+            this.toolStripButtonOr.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonOr.Image = global::Circuits.Properties.Resources.OrIcon;
+            this.toolStripButtonOr.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonOr.Name = "toolStripButtonOr";
+            this.toolStripButtonOr.Size = new System.Drawing.Size(23, 25);
+            this.toolStripButtonOr.Text = "OR Gate";
+            this.toolStripButtonOr.Click += new System.EventHandler(this.toolStripButtonOr_Click);
             // 
-            // toolStripButtonEVALUATE
+            // toolStripButtonNot
             // 
-            this.toolStripButtonEVALUATE.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonEVALUATE.Image = global::Circuits.Properties.Resources.EvaluateIcon;
-            this.toolStripButtonEVALUATE.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonEVALUATE.Name = "toolStripButtonEVALUATE";
-            this.toolStripButtonEVALUATE.Size = new System.Drawing.Size(23, 25);
-            this.toolStripButtonEVALUATE.Text = "EVALUATE";
+            this.toolStripButtonNot.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonNot.Image = global::Circuits.Properties.Resources.NotIcon;
+            this.toolStripButtonNot.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonNot.Name = "toolStripButtonNot";
+            this.toolStripButtonNot.Size = new System.Drawing.Size(23, 25);
+            this.toolStripButtonNot.Text = "NOT Gate";
+            this.toolStripButtonNot.ToolTipText = "NOT Gate";
+            this.toolStripButtonNot.Click += new System.EventHandler(this.toolStripButtonNot_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripButtonCOPY
             // 
@@ -171,24 +140,55 @@
             this.toolStripButtonCOPY.Text = "missing feature";
             this.toolStripButtonCOPY.ToolTipText = "COPY";
             // 
-            // toolStripButtonINPUT
+            // toolStripButtonEVALUATE
             // 
-            this.toolStripButtonINPUT.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonINPUT.Image = global::Circuits.Properties.Resources.InputIcon;
-            this.toolStripButtonINPUT.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonINPUT.Name = "toolStripButtonINPUT";
-            this.toolStripButtonINPUT.Size = new System.Drawing.Size(23, 25);
-            this.toolStripButtonINPUT.Text = "INPUT";
+            this.toolStripButtonEVALUATE.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonEVALUATE.Image = global::Circuits.Properties.Resources.EvaluateIcon;
+            this.toolStripButtonEVALUATE.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonEVALUATE.Name = "toolStripButtonEVALUATE";
+            this.toolStripButtonEVALUATE.Size = new System.Drawing.Size(23, 25);
+            this.toolStripButtonEVALUATE.Text = "EVALUATE";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
             // 
+            // toolStripButtonSTARTC
+            // 
+            this.toolStripButtonSTARTC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSTARTC.Image = global::Circuits.Properties.Resources.StartCompoundIcon;
+            this.toolStripButtonSTARTC.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSTARTC.Name = "toolStripButtonSTARTC";
+            this.toolStripButtonSTARTC.Size = new System.Drawing.Size(23, 25);
+            this.toolStripButtonSTARTC.Text = "START COMPOUND";
+            // 
+            // toolStripButtonENDC
+            // 
+            this.toolStripButtonENDC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonENDC.Image = global::Circuits.Properties.Resources.EndCompoundIcon;
+            this.toolStripButtonENDC.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonENDC.Name = "toolStripButtonENDC";
+            this.toolStripButtonENDC.Size = new System.Drawing.Size(23, 25);
+            this.toolStripButtonENDC.Text = "END COMPOUND";
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButtonEXIT
+            // 
+            this.toolStripButtonEXIT.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonEXIT.BackColor = System.Drawing.Color.Red;
+            this.toolStripButtonEXIT.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonEXIT.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripButtonEXIT.ForeColor = System.Drawing.Color.Black;
+            this.toolStripButtonEXIT.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonEXIT.Name = "toolStripButtonEXIT";
+            this.toolStripButtonEXIT.Size = new System.Drawing.Size(43, 25);
+            this.toolStripButtonEXIT.Text = "EXIT";
+            this.toolStripButtonEXIT.Click += new System.EventHandler(this.toolStripButtonEXIT_Click);
             // 
             // Form1
             // 
@@ -200,6 +200,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Circuits 25\'";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);

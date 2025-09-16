@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,19 +10,38 @@ namespace Circuits
     public abstract class Elements
     {
 
+        // left is the left-hand edge of the main part of the gate.
+        // So the input pins are further left than left.
+        protected int left;
+
+        // top is the top of the whole gate
+        protected int top;
+
+        // set image
+        protected static Image ResImg = Properties.Resources.AndGate;
+        protected static Image ResImgSelect = Properties.Resources.AndGateSelected;
+
+        // width and height of the main part of the gate
+        protected static int WIDTH = ResImg.Width;
+        protected static int HEIGHT = ResImg.Height;
+        // length of the connector legs sticking out left and right
+        protected const int GAP = 10;
+
+        /// <summary>
+        /// This is the list of all the pins of this gate.
+        /// An AND gate always has two input pins (0 and 1)
+        /// and one output pin (number 2).
+        /// </summary>
+        protected List<Pin> pins = new List<Pin>();
+        //Has the gate been selected
+        protected bool selected = false;
 
 
 
-
-
-
-
-
-
-
-
-
-
+        public Elements(int x, int y)
+        {
+            
+        }
 
 
 
@@ -34,7 +54,7 @@ namespace Circuits
         /// <param name="x">The x position of the mouse click</param>
         /// <param name="y">The y position of the mouse click</param>
         /// <returns>True if the mouse click position is inside the gate</returns>
-        public bool IsMouseOn(int x, int y)
+        public virtual bool IsMouseOn(int x, int y)
         {
             if (left <= x && x < left + WIDTH
                 && top <= y && y < top + HEIGHT)
@@ -49,7 +69,7 @@ namespace Circuits
         /// </summary>
         /// <param name="x">The x position to move the gate to</param>
         /// <param name="y">The y position to move the gate to</param>
-        public void MoveTo(int x, int y)
+        public virtual void MoveTo(int x, int y)
         {
             //Debugging message
             Console.WriteLine("pins = " + pins.Count);
@@ -65,5 +85,18 @@ namespace Circuits
             pins[2].X = x + WIDTH + GAP;
             pins[2].Y = y + HEIGHT / 2;
         }
+        /// <summary>
+        /// abstract method used for drawing other gates
+        /// </summary>
+        /// <param name="paper"></param>
+        public abstract void Draw(Graphics paper);
+
+        public abstract bool Evaluate();
+
+        public abstract Elements Clone();
+
+
+
+
     }
 }
