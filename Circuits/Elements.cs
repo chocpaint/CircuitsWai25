@@ -19,7 +19,7 @@ namespace Circuits
         // initialise an element object (public)
         public Elements(int x, int y)
         {
-            MoveTo(x, y);
+            
         }
 
 
