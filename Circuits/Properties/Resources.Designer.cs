@@ -163,6 +163,16 @@ namespace Circuits.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap InputSelect {
+            get {
+                object obj = ResourceManager.GetObject("InputSelect", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap NotGate {
             get {
                 object obj = ResourceManager.GetObject("NotGate", resourceCulture);
@@ -266,6 +276,16 @@ namespace Circuits.Properties {
         public static System.Drawing.Bitmap OutputOn {
             get {
                 object obj = ResourceManager.GetObject("OutputOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap OutputSelect {
+            get {
+                object obj = ResourceManager.GetObject("OutputSelect", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

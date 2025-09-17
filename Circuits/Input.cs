@@ -10,12 +10,13 @@ namespace Circuits
     internal class Input : Elements
     {
         // set images
+        protected static Image ResImg = Properties.Resources.InputOff;
         protected static Image ResImgOn = Properties.Resources.InputOn;
-        protected static Image ResImgOff = Properties.Resources.InputOff;
+        protected static Image ResImgSelect = Properties.Resources.InputSelect;
 
         // image dependant sizing/spacing
-        protected static int WIDTH = ResImgOn.Width;
-        protected static int HEIGHT = ResImgOn.Height;
+        protected static int WIDTH = ResImg.Width;
+        protected static int HEIGHT = ResImg.Height;
         protected const int GAP = 10; // spacing for pins
         protected bool isOn = false; // active state
 
@@ -24,28 +25,34 @@ namespace Circuits
         protected override int Height => HEIGHT;
 
 
+        // constructor
         public Input(int x, int y)
             : base(x, y)
         {
             //add pins to input
-            pins.Add(new Pin(this, true, 30));
+            pins.Add(new Pin(this, false, 30));
             //move the input and the pins to the position passed in
             MoveTo(x, y);
 
         }
-        /// <summary>
-        /// overides the draw method in Elements class
-        /// uses images for selected input
-        /// switches the input on when selected
-        /// </summary>
-        /// <param name="paper"></param>
+
+        // move the gate based on users input
+        public override void MoveTo(int x, int y)
+        {
+            base.MoveTo(x, y);
+            pins[0].X = x + WIDTH;
+            pins[0].Y = y + HEIGHT/2;
+        }
+
+
+        // overides the draw method in Elements class, uses images for selected input, switches the input on when selected
         public override void Draw(Graphics paper)
         {
             Image imgToDraw = selected // using ternary for swapping imgs based on clicked on status
-                ? ResImgOff  // selected alternate image
-                : ResImgOn;       // normal image
+                ? ResImgSelect  // selected alternate image
+                : ResImg;       // normal image
 
-            //Draw each of the pins
+            // draw each of the pins
             foreach (Pin p in pins)
                 p.Draw(paper);
 
@@ -55,19 +62,13 @@ namespace Circuits
             paper.DrawImage(imgToDraw, Left, Top, Width, Height); // with resource img W/H to draw correct size, to correlate to mouse boundary box and pin positions correctly
         }
 
-        /// <summary>
-        /// clone the gate.
-        /// </summary>
-        /// <returns></returns>
+        // clone the element
         public override Elements Clone()
         {
             return new Input(0, 0);
         }
 
-        /// <summary>
-        /// begins checking the status of circuits and change ison based on the input of the other gates
-        /// </summary>
-        /// <returns></returns>
+        // begins checking the status of circuits and change ison based on the input of the other gates
         public override bool Evaluate()
         {
             //check if pin has connection

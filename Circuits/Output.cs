@@ -10,12 +10,13 @@ namespace Circuits
     internal class Output : Elements
     {
         // set images
+        protected static Image ResImg = Properties.Resources.OutputOff;
         protected static Image ResImgOn = Properties.Resources.OutputOn;
-        protected static Image ResImgOff = Properties.Resources.OutputOff;
+        protected static Image ResImgSelect = Properties.Resources.OutputSelect;
 
         // image dependant sizing/spacing
-        protected static int WIDTH = ResImgOn.Width;
-        protected static int HEIGHT = ResImgOn.Height;
+        protected static int WIDTH = ResImg.Width;
+        protected static int HEIGHT = ResImg.Height;
         protected const int GAP = 10; // spacing for pins
         protected bool isOn = false; // active state
 
@@ -32,23 +33,21 @@ namespace Circuits
             //move the output and the pins to the position passed in
             MoveTo(x, y);
         }
-        /// <summary>
-        /// move the gate based on users input
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+
+
+        // move the gate based on users input
         public override void MoveTo(int x, int y)
         {
             base.MoveTo(x, y);
-            pins[0].X = x - GAP;
-            pins[0].Y = y + GAP + 7;
+            pins[0].X = x;
+            pins[0].Y = y + HEIGHT/2;
         }
 
         public override void Draw(Graphics paper)
         {
             Image imgToDraw = selected // using ternary for swapping imgs based on clicked on status
-                ? ResImgOff  // selected alternate image
-                : ResImgOn;       // normal image
+                ? ResImgSelect  // selected alternate image
+                : ResImg;       // normal image
 
             //Draw each of the pins
             foreach (Pin p in pins)
