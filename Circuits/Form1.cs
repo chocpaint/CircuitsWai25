@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +19,31 @@ namespace Circuits
     /// </summary>
     public partial class Form1 : Form
     {
+
+        //====================================================================================================================================================================================
+        //                  Lists
+        //====================================================================================================================================================================================
+        /// <summary>
+        /// The set of gates in the circuit
+        /// </summary>
+        protected List<Elements> listElements = new List<Elements>();
+        /// <summary>
+        /// The gates to remove from gateslist for a compound gate
+        /// </summary>
+        protected List<Elements> removeList = new List<Elements>();
+        /// <summary>
+        /// The set of connector wires in the circuit
+        /// </summary>
+        protected List<Wire> wiresList = new List<Wire>();
+        /// <summary>
+        /// A list of selected gates
+        /// </summary>
+        protected List<Elements> currentGate = new List<Elements>();
+
+        //====================================================================================================================================================================================
+        //                  Vars
+        //====================================================================================================================================================================================
+
         // The (x,y) mouse position of the last MouseDown event.
         protected int startX, startY;
 
@@ -28,17 +54,13 @@ namespace Circuits
         // The (x,y) position of the current gate, just before we started dragging it.
         protected int currentX, currentY;
 
-        // The set of gates in the circuit
-        protected List<Elements> listElements = new List<Elements>();
-
-        // The set of connector wires in the circuit
-        protected List<Wire> wiresList = new List<Wire>();
-
         // The currently selected gate, or null if no gate is selected.
         protected Elements current = null;
 
         // The new gate that is about to be inserted into the circuit
         protected Elements newElement = null;
+        // a temporary variable used to hold compund gates on initiation
+        protected Compound newCompound = null;
 
         public Form1()
         {
@@ -264,13 +286,27 @@ namespace Circuits
         // copy button onclick. _
         private void toolStripButtonCOPY_Click(object sender, EventArgs e)
         {
-
+            foreach (Elements g in listElements)
+            {
+                if (g.Selected == true)
+                {
+                    newElement = g.Clone();
+                }
+            }
         }
 
 
         // evaluate (?) button onclick. _
         private void toolStripButtonEVALUATE_Click(object sender, EventArgs e)
         {
+            foreach (Elements g in listElements )
+            {
+                if (g is Output)
+                {
+                    g.Evaluate();
+                    g.Draw(this.CreateGraphics());
+                }
+            }
 
         }
 
@@ -278,7 +314,32 @@ namespace Circuits
         // start compound button onclick. _
         private void toolStripButtonSTARTC_Click(object sender, EventArgs e)
         {
+            current = null;
+            //Track gates to remove from gateslist and currentlist
+            foreach (Elements g in removeList)
+            {
+                if (listElements.Contains(g))
+                {
+                    listElements.Remove(g);
+                }
 
+                if (currentGate.Contains(g))
+                {
+                    currentGate.Remove(g);
+                }
+            }
+            removeList.Clear();
+            //deselect all gates when clicked
+            foreach (Elements g in newCompound.Gates)
+            {
+                if (g.Selected)
+                {
+                    g.Selected = false;
+                }
+            }
+            //make newgate the compound gate
+            newElement = newCompound;
+            newCompound = null;
         }
 
 
