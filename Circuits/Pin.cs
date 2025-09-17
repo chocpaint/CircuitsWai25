@@ -21,42 +21,41 @@ namespace Circuits
     public class Pin
     {
         // vars
-        
-        private Elements parent; // the gate this pin belongs to
+        public Elements Owner { get; private set; } // the gate this pin belongs to
         private bool isInput; // is it an input pin
-        private int offsetX, offsetY; // position relative to the gate
+        public int X { get; set; } // coordinates
+        public int Y { get; set; }
 
-        // If this pin is an input, it may have one wire feeding into it
+
+        // if this pin is an input, it may have one wire feeding into it
         public Wire InputWire { get; set; }
 
-        // Constructor
-        public Pin(Elements parent, int offsetX, int offsetY, bool isInput)
+
+        // constructor
+        public Pin(Elements owner, bool isInput, int offset)
         {
-            this.parent = parent;
-            this.offsetX = offsetX;
-            this.offsetY = offsetY;
+            this.Owner = owner;
             this.isInput = isInput;
+
+            // default position until gate MoveTo sets them properly
+            this.X = owner.Left + offset;
+            this.Y = owner.Top + offset;
         }
 
 
-        private Elements owner;  // The gate this pin belongs to
+        // is input pin bool
+        public bool IsInput => isInput;
 
-        public int X { get; set; }
-        public int Y { get; set; }
-        public bool IsInput { get; } // A read-only property that returns true for input pins and false for output pins.
-
-        public bool Input { get; set; } // explicit pin type bools
-        public bool Output { get; set; }
+        // is output pin bool
+        public bool IsOutput => !isInput;
 
 
-        // initialises the object to the values passed in.
-        public Pin(Elements owner, bool isInput, int spacing)
+        // True if (mouseX, mouseY) is within 3 pixels of end position of the pin.
+        public bool isMouseOn(int mouseX, int mouseY)
         {
-            this.owner = owner;
-            this.IsInput = isInput;
-            // position will be set later in MoveTo of the gate
-            X = owner.Left;
-            Y = owner.Top;
+            int diffX = mouseX - X;
+            int diffY = mouseY - Y;
+            return diffX * diffX + diffY * diffY <= 5 * 5; // return true if valid position
         }
 
 
@@ -65,7 +64,8 @@ namespace Circuits
         {
             // Simple example: draw a small circle for pin
             int radius = 4;
-            paper.FillEllipse(Brushes.Black, X - radius, Y - radius, radius * 2, radius * 2);
+            Brush brush = isInput ? Brushes.Blue : Brushes.Green;
+            paper.FillEllipse(brush, X - radius, Y - radius, radius * 2, radius * 2);
         }
 
 
@@ -75,54 +75,5 @@ namespace Circuits
             return $"Pin({(IsInput ? "In" : "Out")}) at ({X},{Y})";
         }
 
-
-        /*
-        // For input pins, this gets or sets the wire that is coming into the pin.  (Input pins can only be connected to one wire)
-        // For output pins, sets are ignored and get always returns null.
-        public Wire InputWire
-        {
-            get
-            {
-                return connection;
-            }
-            set
-            {
-                if (IsInput)
-                {
-                    connection = value;
-                }
-            }
-        }
-
-        // get/set X,Y positions
-        // For input pins, this is at the left position of the pin
-        // For output pins, this is at the right position of the pin
-        public int X { get; set; }
-        public int Y { get; set; }
-
-        // True if (mouseX, mouseY) is within 3 pixels of end position of the pin.
-        public bool isMouseOn(int mouseX, int mouseY)
-        {
-            int diffX = mouseX - x;
-            int diffY = mouseY - y;
-            return diffX * diffX + diffY * diffY <= 5 * 5; // return true if valid position
-        }
-
-        // draws the pin using paper Graphics display
-        public override void Draw(Graphics paper)
-        {
-            Brush brush = Brushes.CornflowerBlue;
-
-            if (IsInput)
-            {
-                paper.FillRectangle(brush, x - 1, y - 1, length, 3);
-            }
-            else
-            {
-                paper.FillRectangle(brush, x - length + 1, y - 1, length, 3);
-            }
-        }
-        */
-        
     }
 }
