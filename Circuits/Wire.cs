@@ -13,7 +13,7 @@ namespace Circuits
     /// That is, it connects the output pin FromPin 
     /// to the input pin ToPin.
     /// </summary>
-    public class Wire : Elements
+    public class Wire
     {
         //Has the wire been selected
         protected bool selected = false;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Circuits
 {
-    internal class InputSources : Elements
+    internal class Compound : Elements
     {
 
 
