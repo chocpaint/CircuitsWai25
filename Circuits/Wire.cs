@@ -15,57 +15,43 @@ namespace Circuits
     /// </summary>
     public class Wire
     {
-        //Has the wire been selected
+        // has the wire been selected
         protected bool selected = false;
-        //The pins the wire is connected to
+        // the pins the wire is connected to
         protected Pin fromPin, toPin;
 
-        /// <summary>
-        /// Initialises the object to the pins it is connected to.
-        /// </summary>
-        /// <param name="from">The pin the wire starts from</param>
-        /// <param name="to">The pin the wire ends at</param>
+        // initialises the object to the pins it is connected to.
         public Wire(Pin from, Pin to)
         {
             fromPin = from;
             toPin = to;
         }
 
-        /// <summary>
-        /// Indicates whether this gate is the current one selected.
-        /// </summary>
+        // indicates whether this gate is the current one selected.
         public bool Selected
         {
             get { return selected; }
             set { selected = value; }
         }
 
-        /// <summary>
-        /// The output pin that this wire is connected to.
-        /// </summary>
+        // the output pin that this wire is connected to.
         public Pin FromPin
         {
             get { return fromPin; }
         }
 
-        /// <summary>
-        /// The input pin that this wire is connected to.
-        /// </summary>
+        // the input pin that this wire is connected to.
         public Pin ToPin
         {
             get { return toPin; }
         }
 
-        /// <summary>
-        /// Draws the wire.
-        /// </summary>
-        /// <param name="paper"></param>
+        // draws the wire.
         public void Draw(Graphics paper)
         {
-            //This is a short-hand way of doing an if statement.  It is saying if selected == true then 
-            //use Color.Red else use Color.White and then create the wire
+            // if selected == true, use Color.Red, else use Color.White
             Pen wire = new Pen(selected ? Color.Red : Color.White, 3);
-            //Draw the wire
+            // draw the wire
             paper.DrawLine(wire, fromPin.X, fromPin.Y, toPin.X, toPin.Y);
         }
     }
