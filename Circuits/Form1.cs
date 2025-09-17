@@ -210,7 +210,7 @@ namespace Circuits
             else
             {
                 // search for the first gate under the mouse position
-                foreach (AndGate g in listElements)
+                foreach (Elements g in listElements)
                 {
                     if (g.IsMouseOn(e.X, e.Y))
                     {
