@@ -125,7 +125,7 @@ namespace Circuits
         /// <returns></returns>
         public override Elements Clone()
         {
-            return new Compound(0, 0);
+            return new Compound(0, 0);  
         }
         /// <summary>
         /// this method should evaluate the compoud gate by using

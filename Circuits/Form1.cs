@@ -286,7 +286,13 @@ namespace Circuits
         // copy button onclick. _
         private void toolStripButtonCOPY_Click(object sender, EventArgs e)
         {
-
+            foreach (Elements g in listElements)
+            {
+                if (g.Selected == true)
+                {
+                    newElement = g.Clone();
+                }
+            }
         }
 
 
@@ -332,8 +338,8 @@ namespace Circuits
                 }
             }
             //make newgate the compound gate
-            newGate = newCompounGate;
-            newCompounGate = null;
+            newElement = newCompound;
+            newCompound = null;
         }
 
 
