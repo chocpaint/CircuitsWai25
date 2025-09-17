@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Circuits
 {
-    internal class CompundGates : Elements
+    internal class CompoundGates : Elements
     {
 
 
