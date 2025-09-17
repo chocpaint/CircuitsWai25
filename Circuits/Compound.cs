@@ -21,7 +21,6 @@ namespace Circuits
         // var overrides
         protected override int Width => WIDTH;
         protected override int Height => HEIGHT;
-
         protected List<Elements> gates;
         /// <summary>
         /// Initializes a compound gate object
@@ -43,13 +42,6 @@ namespace Circuits
             get { return gates; }
         }
         /// <summary>
-        /// This method overrides the moveto method to move each individual gate in the
-        /// compound list.
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-
-        /// <summary>
         /// This method overrides the draw method and draws each gate
         /// </summary>
         /// <param name="paper"></param>
@@ -70,29 +62,21 @@ namespace Circuits
 
             if (g.Left < Left)
             {
-
-                left = g.Left;
-            
+                left = g.Left;        
             }
-
             if (g.Top < Top)
             { 
                 top = g.Top;
             }
         }
+        /// <summary>
+        /// This method overrides the moveto method to move each individual gate in the
+        /// compound list.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public override void MoveTo(int x, int y)
         {
-            //incomplete method
-            //int distx = x - left;
-            //int disty = y - top;
-            //left = y;
-            //top = x;
-            //foreach (Elements gate in gates)
-            //{
-            //    gate.MoveTo(gate.Left + distx, gate.Top + disty);
-            //}
-
-
             if (gates.Count == 0) return;
 
             // Find the current bounds of the compound gate
@@ -108,11 +92,9 @@ namespace Circuits
             {
                 gate.MoveTo(gate.Left + distx, gate.Top + disty);
             }
-
             // Update the compound gate's position to match
             left = x;
             top = y;
-
         }
         /// <summary>
         /// This method ovverides the selected property for each gate in the
@@ -174,6 +156,5 @@ namespace Circuits
             }
             return false;
         }
-
     }
 }
