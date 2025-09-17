@@ -11,5 +11,14 @@ namespace Circuits
 
 
 
+
+        public OutpuLamp(int x, int y)
+            : base(x, y)
+        {
+            //add pins to gate
+            pins.Add(new Pin(this, true, 30));
+            //move the gate and the pins to the position passed in
+            MoveTo(x, y);
+        }
     }
 }
