@@ -17,16 +17,6 @@ namespace Circuits
         // top is the top of the whole gate
         protected int top;
 
-        // set image
-        protected static Image ResImg = Properties.Resources.AndGate;
-        protected static Image ResImgSelect = Properties.Resources.AndGateSelected;
-
-        // width and height of the main part of the gate
-        protected static int WIDTH = ResImg.Width;
-        protected static int HEIGHT = ResImg.Height;
-        // length of the connector legs sticking out left and right
-        protected const int GAP = 10;
-
         /// <summary>
         /// This is the list of all the pins of this gate.
         /// An AND gate always has two input pins (0 and 1)

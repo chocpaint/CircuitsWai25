@@ -167,5 +167,17 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OutputIcon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OutputIcon11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OutputOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OutputOff.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
