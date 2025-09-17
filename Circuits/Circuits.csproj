@@ -177,9 +177,6 @@
     <None Include="Resources\OutputIcon11.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\OutputOn.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\OutputOff.png" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +190,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\InputOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OutputOn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
