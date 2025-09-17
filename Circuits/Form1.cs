@@ -372,3 +372,34 @@ namespace Circuits
 }
 // TREY WUZ'ERE
 // key wordis was as Himothy has taken over. they call me Himothy for i am the HIM - regards Tama
+
+
+
+//1. Is it a better idea to fully document the Gate class or the AndGate
+//subclass? Can you inherit comments?
+
+//it is better to comment the gate class as it can apply to many different instances of objects
+//You cannot inherit comments
+
+//Q2)   What is the advantage of making a method abstract in the superclass
+//rather than just writing a virtual method with no code in the body of
+//the method? Is there any disadvantage to an abstract method?
+
+
+//abstract methods force a sub class to inherit that method from the superclass the 
+//specific design of the superclass can be enforced as appossed to a virtual method
+//which the sub class can choose to use fbLip side this can be a disadvantage aswell as it
+//decreases the flexibility of the sub classes
+
+//Q3) If a class has an abstract method in it, does the class have to be
+//abstract?
+
+
+//yes if the class has abstract methods it itself must also be abstract
+
+
+//Q4) What would happen in your program if one of the gates added to your
+//Compound Gate is another Compound Gate? Is your design robust    
+//enough to cope with this situation?
+
+
