@@ -21,6 +21,24 @@ namespace Circuits
     public class Pin
     {
         // vars
+        
+        private Elements parent; // the gate this pin belongs to
+        private bool isInput; // is it an input pin
+        private int offsetX, offsetY; // position relative to the gate
+
+        // If this pin is an input, it may have one wire feeding into it
+        public Wire InputWire { get; set; }
+
+        // Constructor
+        public Pin(Elements parent, int offsetX, int offsetY, bool isInput)
+        {
+            this.parent = parent;
+            this.offsetX = offsetX;
+            this.offsetY = offsetY;
+            this.isInput = isInput;
+        }
+
+
         private Elements owner;  // The gate this pin belongs to
 
         public int X { get; set; }

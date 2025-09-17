@@ -129,7 +129,7 @@ namespace Circuits
         }
         /// <summary>
         /// this method should evaluate the compoud gate by using
-        /// the eva;uate method of each gate in the list
+        /// the evaluate method of each gate in the list
         /// </summary>
         /// <returns></returns>
         public override bool Evaluate()
