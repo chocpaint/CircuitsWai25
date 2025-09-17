@@ -9,13 +9,18 @@ namespace Circuits
 {
     internal class Output : Elements
     {
-        // width and height of the main part of the gate
+        // image dependant sizing/spacing
         protected static int WIDTH = ResImg.Width;
         protected static int HEIGHT = ResImg.Height;
         // length of the connector legs sticking out left and right
         protected const int GAP = 10;
         protected static Image ResImg = Properties.Resources.OutputOn;
         protected static Image ResImgSelect = Properties.Resources.OutputOff;
+
+        // var overrides
+        protected override int Width => WIDTH;
+        protected override int Height => HEIGHT;
+
 
         protected bool isOn = false;
 
