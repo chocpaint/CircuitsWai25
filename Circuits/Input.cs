@@ -9,21 +9,20 @@ namespace Circuits
 {
     internal class Input : Elements
     {
+        // set images
+        protected static Image ResImgOn = Properties.Resources.InputOn;
+        protected static Image ResImgOff = Properties.Resources.InputOff;
 
         // image dependant sizing/spacing
-        protected static int WIDTH = ResImg.Width;
-        protected static int HEIGHT = ResImg.Height;
-        // length of the connector legs sticking out left and right
-        protected const int GAP = 10;
-        protected static Image ResImg = Properties.Resources.InputOn;
-        protected static Image ResImgSelect = Properties.Resources.InputOff;
+        protected static int WIDTH = ResImgOn.Width;
+        protected static int HEIGHT = ResImgOn.Height;
+        protected const int GAP = 10; // spacing for pins
+        protected bool isOn = false; // active state
 
         // var overrides
         protected override int Width => WIDTH;
         protected override int Height => HEIGHT;
 
-
-        protected bool isOn = false;
 
         public Input(int x, int y)
             : base(x, y)
@@ -43,8 +42,8 @@ namespace Circuits
         public override void Draw(Graphics paper)
         {
             Image imgToDraw = selected // using ternary for swapping imgs based on clicked on status
-                ? ResImgSelect  // selected alternate image
-                : ResImg;       // normal image
+                ? ResImgOff  // selected alternate image
+                : ResImgOn;       // normal image
 
             //Draw each of the pins
             foreach (Pin p in pins)
