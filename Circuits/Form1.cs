@@ -311,15 +311,15 @@ namespace Circuits
         // evaluate (?) button onclick. _
         private void toolStripButtonEVALUATE_Click(object sender, EventArgs e)
         {
-            foreach (Elements g in listElements )
+            foreach (Elements g in listElements)
             {
                 if (g is Output)
                 {
-                    g.Evaluate();
-                    g.Draw(this.CreateGraphics());
+                    bool result = g.Evaluate();
+                    Console.WriteLine("Output evaluated to: " + result);
                 }
             }
-
+            this.Invalidate(); // redraw form with updated on/off images
         }
 
 
