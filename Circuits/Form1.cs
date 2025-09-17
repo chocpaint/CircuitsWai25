@@ -244,6 +244,11 @@ namespace Circuits
                         g.Selected = true;
                         current = g;
 
+                        if (g is Input inputGate)
+                        {
+                            inputGate.Toggle();
+                        }
+
                         if (newCompound != null)
                         {
                             newCompound.AddGate(g);

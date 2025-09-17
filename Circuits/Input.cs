@@ -64,7 +64,7 @@ namespace Circuits
             paper.DrawImage(baseImg, Left, Top, Width, Height); // with resource img W/H to draw correct size, to correlate to mouse boundary box and pin positions correctly
 
             // if selected, overlay the select image (transparent red highlight)
-            if (_selected)
+            if (Selected)
             {
                 paper.DrawImage(ResImgSelect, Left, Top, Width, Height);
             }
