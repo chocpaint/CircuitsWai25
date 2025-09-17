@@ -234,6 +234,13 @@ namespace Circuits
                     {
                         g.Selected = true;
                         current = g;
+
+                        // toggle active state if input gate when clicked
+                        if (g is Input inputGate)
+                        {
+                            inputGate.Toggle();
+                        }
+
                         this.Invalidate();
                         break;
                     }

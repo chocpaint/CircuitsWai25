@@ -10,13 +10,13 @@ namespace Circuits
     internal class Output : Elements
     {
         // set images
-        protected static Image ResImg = Properties.Resources.OutputOff;
+        protected static Image ResImgOff = Properties.Resources.OutputOff;
         protected static Image ResImgOn = Properties.Resources.OutputOn;
         protected static Image ResImgSelect = Properties.Resources.OutputSelect;
 
         // image dependant sizing/spacing
-        protected static int WIDTH = ResImg.Width;
-        protected static int HEIGHT = ResImg.Height;
+        protected static int WIDTH = ResImgOff.Width;
+        protected static int HEIGHT = ResImgOff.Height;
         protected const int GAP = 10; // spacing for pins
         protected bool isOn = false; // active state
 
@@ -25,6 +25,7 @@ namespace Circuits
         protected override int Height => HEIGHT;
 
 
+        // constructor
         public Output(int x, int y)
             : base(x, y)
         {
@@ -34,6 +35,11 @@ namespace Circuits
             MoveTo(x, y);
         }
 
+        // toggle active state
+        public void Toggle()
+        {
+            isOn = !isOn;
+        }
 
         // move the gate based on users input
         public override void MoveTo(int x, int y)
@@ -43,27 +49,34 @@ namespace Circuits
             pins[0].Y = y + HEIGHT/2;
         }
 
+        // overrides the draw method in Elements class, uses images to display active state, and selected state
         public override void Draw(Graphics paper)
         {
-            Image imgToDraw = selected // using ternary for swapping imgs based on clicked on status
-                ? ResImgSelect  // selected alternate image
-                : ResImg;       // normal image
+            // base image = on/off visual state
+            Image baseImg = isOn // using ternary for swapping imgs based on clicked on status
+                ? ResImgOn
+                : ResImgOff;
 
-            //Draw each of the pins
+            // draw each of the pins
             foreach (Pin p in pins)
                 p.Draw(paper);
 
-            //Note: You can also use the images that have been imported into the project if you wish,
-            //      using the code below.  You will need to space the pins out a bit more in the constructor.
-            //      There are provided images for the other gates and selected versions of the gates as well.
-            paper.DrawImage(imgToDraw, Left, Top, Width, Height); // with resource img W/H to draw correct size, to correlate to mouse boundary box and pin positions correctly
+            paper.DrawImage(baseImg, Left, Top, Width, Height); // with resource img W/H to draw correct size, to correlate to mouse boundary box and pin positions correctly
+
+            // if selected, overlay the select image (transparent red highlight)
+            if (selected)
+            {
+                paper.DrawImage(ResImgSelect, Left, Top, Width, Height);
+            }
         }
 
+        // clone the element
+        public override Elements Clone()
+        {
+            return new Input(0, 0);
+        }
 
-        /// <summary>
-        /// begins checking the status of circuits and change ison based on the input of the other gates
-        /// </summary>
-        /// <returns></returns>
+        // begins checking the status of circuits and change ison based on the input of the other gates
         public override bool Evaluate()
         {
             //check if pin has connection
@@ -80,16 +93,6 @@ namespace Circuits
             }
         }
 
-        /// <summary>
-        /// clone the output.
-        /// </summary>
-        /// <returns></returns>
-        public override Elements Clone()
-        {
-            return new Output(0, 0);
-        }
-
     }
-
 }
 
