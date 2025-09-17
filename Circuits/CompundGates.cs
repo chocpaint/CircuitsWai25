@@ -8,5 +8,8 @@ namespace Circuits
 {
     internal class CompundGates : Elements
     {
+
+
+
     }
 }
