@@ -128,7 +128,7 @@ namespace Circuits
         /// Draws the pin.
         /// </summary>
         /// <param name="paper">Where to draw the graphics</param>
-        public void Draw(Graphics paper)
+        public override void Draw(Graphics paper)
         {
             Brush brush = Brushes.DarkGray;
 
