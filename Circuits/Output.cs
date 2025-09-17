@@ -20,5 +20,7 @@ namespace Circuits
             //move the gate and the pins to the position passed in
             MoveTo(x, y);
         }
+
+
     }
 }
