@@ -165,7 +165,7 @@ namespace Circuits
         // add input button onclick. adds input item to cursor for user to place.
         private void toolStripButtonINPUT_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         // add output button onclick. adds output item to cursor for user to place.
