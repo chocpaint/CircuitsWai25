@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Circuits
 {
-    internal class Compound : Elements
+    public class Compound : Elements
     {
         // set images
         protected static Image ResImg = Properties.Resources.AndGate,OrGate,NotGate,InputOn,OutputOn;
