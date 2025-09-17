@@ -37,7 +37,7 @@ namespace Circuits
         /// <param name="gate"></param>
         /// <param name="input"></param>
         /// <param name="length"></param>
-        public Pin(AndGate gate, bool input, int length)
+        public Pin(Elements gate, bool input, int length)
         {
             this.owner = gate;
             this.input = input;
