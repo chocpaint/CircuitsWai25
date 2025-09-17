@@ -46,17 +46,13 @@ namespace Circuits
 
         // The (x,y) mouse position of the last MouseDown event.
         protected int startX, startY;
-
         // If this is non-null, we are inserting a wire by
         // dragging the mouse from startPin to some output Pin.
         protected Pin startPin = null;
-
         // The (x,y) position of the current gate, just before we started dragging it.
         protected int currentX, currentY;
-
         // The currently selected gate, or null if no gate is selected.
         protected Elements current = null;
-
         // The new gate that is about to be inserted into the circuit
         protected Elements newElement = null;
         // a temporary variable used to hold compund gates on initiation
