@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Circuits
+namespace Circuits 
 {
     /// <summary>
     /// Each Pin represents an input or an output of a gate.
@@ -18,7 +18,7 @@ namespace Circuits
     /// Output pins may have lots of wires pointing to them,
     /// but they don't know anything about this.
     /// </summary>
-    public class Pin
+    public class Pin : Elements
     {
         //The x and y position of the pin
         protected int x, y;
