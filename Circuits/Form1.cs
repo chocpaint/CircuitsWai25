@@ -272,6 +272,15 @@ namespace Circuits
         private void toolStripButtonEVALUATE_Click(object sender, EventArgs e)
         {
 
+            foreach (Elements g in )
+            {
+                if (g is Output)
+                {
+                    g.Evaluate();
+                    g.Draw(this.CreateGraphics());
+                }
+            }
+
         }
 
 
