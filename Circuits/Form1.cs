@@ -244,11 +244,12 @@ namespace Circuits
                         g.Selected = true;
                         current = g;
 
-                        if (newCompound != null)
+                        // toggle active state if input gate when clicked
+                        if (g is Input inputGate)
                         {
-                            newCompound.AddGate(g);
-                            removeList.Add(g);
+                            inputGate.Toggle();
                         }
+
                         this.Invalidate();
                         break;
                     }
