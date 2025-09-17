@@ -58,11 +58,7 @@ namespace Circuits
         // a temporary variable used to hold compund gates on initiation
         protected Compound newCompound = null;
 
-        public Form1()
-        {
-            InitializeComponent();
-            DoubleBuffered = true;
-        }
+
 
 //====================================================================================================================================================================================
 //                  METHODS
@@ -81,6 +77,12 @@ namespace Circuits
                 }
             }
             return null;
+        }
+
+        public Form1()
+        {
+            InitializeComponent();
+            DoubleBuffered = true;
         }
 
         // Redraws all the graphics for the current circuit.
@@ -212,8 +214,15 @@ namespace Circuits
             // check if a gate is currently selected
             if (current != null)
             {
+                //allow compound start button to select multiple gates
+                if (newCompound == null)
+                {
+                    current.Selected = false;
+                }
+                //current = null;
+                //this.Invalidate();
                 // unselect the selected gate
-                current.Selected = false;
+                //current.Selected = false;
                 current = null;
                 this.Invalidate();
             }
@@ -324,6 +333,7 @@ namespace Circuits
         // end compound button onclick. _
         private void toolStripButtonENDC_Click(object sender, EventArgs e)
         {
+
             current = null;
             //Track gates to remove from gateslist and currentlist
             foreach (Elements g in removeList)
@@ -363,3 +373,34 @@ namespace Circuits
 }
 // TREY WUZ'ERE
 // key wordis was as Himothy has taken over. they call me Himothy for i am the HIM - regards Tama
+
+
+
+//1. Is it a better idea to fully document the Gate class or the AndGate
+//subclass? Can you inherit comments?
+
+//it is better to comment the gate class as it can apply to many different instances of objects
+//You cannot inherit comments
+
+//Q2)   What is the advantage of making a method abstract in the superclass
+//rather than just writing a virtual method with no code in the body of
+//the method? Is there any disadvantage to an abstract method?
+
+
+//abstract methods force a sub class to inherit that method from the superclass the 
+//specific design of the superclass can be enforced as appossed to a virtual method
+//which the sub class can choose to use fbLip side this can be a disadvantage aswell as it
+//decreases the flexibility of the sub classes
+
+//Q3) If a class has an abstract method in it, does the class have to be
+//abstract?
+
+
+//yes if the class has abstract methods it itself must also be abstract
+
+
+//Q4) What would happen in your program if one of the gates added to your
+//Compound Gate is another Compound Gate? Is your design robust    
+//enough to cope with this situation?
+
+

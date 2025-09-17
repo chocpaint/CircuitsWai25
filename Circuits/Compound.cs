@@ -48,34 +48,17 @@ namespace Circuits
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public override void MoveTo(int x, int y)
-        {
-            //incomplete method
-            int distx = x - left;
-            int disty = y - top;
-            left = y;
-            top = x;
-            foreach (Elements gate in gates)
-            {
-                gate.MoveTo(gate.Left + distx, gate.Top + disty);
-            }
-        }
+
         /// <summary>
         /// This method overrides the draw method and draws each gate
         /// </summary>
         /// <param name="paper"></param>
         public override void Draw(Graphics paper)
         {
-            Image imgToDraw = Selected // ternary determining image from selected state
-    ? ResImgSelect  // selected alternate image
-    : ResImg;       // normal image (unselected)
-
-            // draw every pin
-            foreach (Pin p in pins)
-                p.Draw(paper);
-
-            // draw gate image with resource W/H to draw correct size, to correlate to mouse boundary box and position pins correctly
-            paper.DrawImage(imgToDraw, Left, Top, Width, Height);
+            foreach (Elements gate in gates)
+            {
+                gate.Draw(paper);
+            }
         }
         /// <summary>
         /// this method adds gates to compound gates list
@@ -84,6 +67,52 @@ namespace Circuits
         public void AddGate(Elements g)
         {
             gates.Add(g);
+
+            if (g.Left < Left)
+            {
+
+                left = g.Left;
+            
+            }
+
+            if (g.Top < Top)
+            { 
+                top = g.Top;
+            }
+        }
+        public override void MoveTo(int x, int y)
+        {
+            //incomplete method
+            //int distx = x - left;
+            //int disty = y - top;
+            //left = y;
+            //top = x;
+            //foreach (Elements gate in gates)
+            //{
+            //    gate.MoveTo(gate.Left + distx, gate.Top + disty);
+            //}
+
+
+            if (gates.Count == 0) return;
+
+            // Find the current bounds of the compound gate
+            int currentLeft = gates.Min(g => g.Left);
+            int currentTop = gates.Min(g => g.Top);
+
+            // Calculate the distance to move
+            int distx = x - currentLeft;
+            int disty = y - currentTop;
+
+            // Move each gate in the compound by the calculated distance
+            foreach (Elements gate in gates)
+            {
+                gate.MoveTo(gate.Left + distx, gate.Top + disty);
+            }
+
+            // Update the compound gate's position to match
+            left = x;
+            top = y;
+
         }
         /// <summary>
         /// This method ovverides the selected property for each gate in the
