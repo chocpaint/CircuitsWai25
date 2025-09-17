@@ -76,21 +76,10 @@ namespace Circuits
             return new Input(0, 0);
         }
 
-        // begins checking the status of circuits and change ison based on the input of the other gates
+        // returns active state of input
         public override bool Evaluate()
         {
-            //check if pin has connection
-            if (pins[0].InputWire == null)
-            {
-                return false;
-            }
-            else
-            {
-
-                Elements Input = pins[0].InputWire.FromPin.Owner;
-                isOn = Input.Evaluate();
-                return isOn;
-            }
+            return isOn;
         }
 
     }

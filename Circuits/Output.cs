@@ -82,15 +82,14 @@ namespace Circuits
             //check if pin has connection
             if (pins[0].InputWire == null)
             {
-                return false;
+                isOn = false;
             }
             else
             {
-                
                 Elements Output = pins[0].InputWire.FromPin.Owner;
                 isOn = Output.Evaluate();
-                return isOn;
             }
+            return isOn;
         }
 
     }
