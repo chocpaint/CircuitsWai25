@@ -9,9 +9,9 @@ namespace Circuits
 {
     internal class Output : Elements
     {
-        //// width and height of the main part of the gate
-        //protected static int WIDTH = ResImg.Width;
-        //protected static int HEIGHT = ResImg.Height;
+        // width and height of the main part of the gate
+        protected static int WIDTH = ResImg.Width;
+        protected static int HEIGHT = ResImg.Height;
         // length of the connector legs sticking out left and right
         protected const int GAP = 10;
         protected static Image ResImg = Properties.Resources.OutputOn;
