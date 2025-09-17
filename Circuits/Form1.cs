@@ -248,13 +248,13 @@ namespace Circuits
         // add input button onclick. adds input item to cursor for user to place.
         private void toolStripButtonINPUT_Click(object sender, EventArgs e)
         {
-            
+            newElement = new Input(0, 0);
         }
 
         // add output button onclick. adds output item to cursor for user to place.
         private void toolStripButtonOUTPUT_Click(object sender, EventArgs e)
         {
-
+            newElement = new Output(0, 0);
         }
 
 
@@ -310,6 +310,13 @@ namespace Circuits
         // start compound button onclick. _
         private void toolStripButtonSTARTC_Click(object sender, EventArgs e)
         {
+            newCompound = new Compound(this.Width, this.Height);
+        }
+
+
+        // end compound button onclick. _
+        private void toolStripButtonENDC_Click(object sender, EventArgs e)
+        {
             current = null;
             //Track gates to remove from gateslist and currentlist
             foreach (Elements g in removeList)
@@ -336,13 +343,6 @@ namespace Circuits
             //make newgate the compound gate
             newElement = newCompound;
             newCompound = null;
-        }
-
-
-        // end compound button onclick. _
-        private void toolStripButtonENDC_Click(object sender, EventArgs e)
-        {
-
         }
 
         /// exit button onclick. ends the program.
