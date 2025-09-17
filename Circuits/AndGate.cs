@@ -28,7 +28,7 @@ namespace Circuits
 
 
         // initialises the Gate
-        public AndGate(int x, int y)
+        public AndGate(int x, int y) : base(x, y)
         {
             // add 2 input pins
             pins.Add(new Pin(this, true, 20));
@@ -57,7 +57,7 @@ namespace Circuits
 
 
         // moveto overide method. move the gate to the position specified (mouse pos) and pins.
-        public override MoveTo(int x, int y)
+        public override void MoveTo(int x, int y)
         {
             // call inheritted method with override
             base.MoveTo(x, y); 
@@ -72,6 +72,29 @@ namespace Circuits
             pins[1].Y = y + HEIGHT / 2 + GAP;
             pins[2].X = x + WIDTH + GAP;
             pins[2].Y = y + HEIGHT / 2;
+        }
+
+        // evaluate override method
+        public override bool Evaluate()
+        {
+            //check if pin has connection
+            if (pins[0].InputWire == null)
+            {
+                return false;
+            }
+            else
+            {
+                //change is on to last gates evaluate value.
+                Elements gateA = pins[0].InputWire.FromPin.Owner;
+                isOn = gateA.Evaluate();
+                return isOn;
+            }
+        }
+
+        // clone override method
+        public override Elements Clone()
+        {
+            return new AndGate(Left, Top);
         }
     }
 }
