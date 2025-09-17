@@ -21,13 +21,11 @@ namespace Circuits
         // var overrides
         protected override int Width => WIDTH;
         protected override int Height => HEIGHT;
-
+        // list to hold gates in compound gate
         protected List<Elements> gates;
-        /// <summary>
-        /// Initializes a compound gate object
-        /// </summary>
-        /// <param name="x">Mouse position passed in on x axis</param>
-        /// <param name="y">mouse position passed in of y axis</param>
+        
+
+        // Initializes a compound gate object with mouse coordinates
         public Compound(int x, int y)
           : base(x, y)
         {
@@ -35,24 +33,14 @@ namespace Circuits
             top = y;
             gates = new List<Elements>();
         }
-        /// <summary>
-        /// This property returns the internal list of gates in the compound gate.
-        /// </summary>
+
+        // This property returns the internal list of gates in the compound gate.
         public List<Elements> Gates
         {
             get { return gates; }
         }
-        /// <summary>
-        /// This method overrides the moveto method to move each individual gate in the
-        /// compound list.
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-
-        /// <summary>
-        /// This method overrides the draw method and draws each gate
-        /// </summary>
-        /// <param name="paper"></param>
+        
+        // This method overrides the draw method and draws each gate
         public override void Draw(Graphics paper)
         {
             foreach (Elements gate in gates)
@@ -60,10 +48,8 @@ namespace Circuits
                 gate.Draw(paper);
             }
         }
-        /// <summary>
-        /// this method adds gates to compound gates list
-        /// </summary>
-        /// <param name="g"></param>
+
+        // method adds gates to compound gates list
         public void AddGate(Elements g)
         {
             gates.Add(g);
@@ -80,6 +66,8 @@ namespace Circuits
                 top = g.Top;
             }
         }
+
+        // moveto override method to move each individual element in the compound list
         public override void MoveTo(int x, int y)
         {
             if (gates.Count == 0) return;
@@ -103,10 +91,8 @@ namespace Circuits
             top = y;
 
         }
-        /// <summary>
-        /// This method ovverides the selected property for each gate in the
-        /// compound list.
-        /// </summary>
+
+        // selected property overide method for each gate in the compound list.
         public override bool Selected
         {
             get => base.Selected;
@@ -118,13 +104,8 @@ namespace Circuits
                 }
             }
         }
-        /// <summary>
-        /// this method overrides the ismouse n methon to select 
-        /// each individual gate in the compound
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
+
+        // is mouse on override method to determine if mouse is on valid position of an element
         public override bool IsMouseOn(int x, int y)
         {
             foreach (Elements g in gates)
@@ -137,24 +118,19 @@ namespace Circuits
             }
             return false;
         }
-        /// <summary>
-        /// This method should clone the compound gate
-        /// </summary>
-        /// <returns></returns>
+        
+        // clone the compound gate [DOES NOT WORK]
         public override Elements Clone()
         {
             return new Compound(0, 0);
         }
-        /// <summary>
-        /// this method should evaluate the compoud gate by using
-        /// the evaluate method of each gate in the list
-        /// </summary>
-        /// <returns></returns>
+
+        // evaluate override method to perform individual logic operations of elements in the compound list
         public override bool Evaluate()
         {
             foreach (Elements gate in gates)
             {
-                //check if gate should start reaction of evaluate calls
+                // check if gate should start reaction of evaluate calls
                 if (gate is Output)
                 {
                     return gate.Evaluate();
