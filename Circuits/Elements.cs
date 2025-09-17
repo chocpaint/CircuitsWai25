@@ -37,13 +37,40 @@ namespace Circuits
         protected bool selected = false;
 
 
-
+        /// <summary>
+        /// this will initialize a gate object
+        /// </summary>
+        /// <param name="x">represents the _x position of the gates</param>
+        /// <param name="y">this represents the y position of the gates</param>
         public Elements(int x, int y)
         {
             
         }
 
 
+        /// <summary>
+        /// Gets the left hand edge of the gate
+        /// </summary>
+        public int Left
+        {
+            get { return left;  }
+        }
+
+        /// <summary>
+        /// gets the top edge of the gates
+        /// </summary>
+        public int Top
+        { 
+            get { return top; }
+        }
+
+        /// <summary>
+        /// gets the list of pins for the gates
+        /// </summary>
+        public List<Pin> Pins
+        {
+            get { return pins; }
+        }
 
 
 
@@ -85,14 +112,24 @@ namespace Circuits
             pins[2].X = x + WIDTH + GAP;
             pins[2].Y = y + HEIGHT / 2;
         }
+
         /// <summary>
         /// abstract method used for drawing other gates
         /// </summary>
         /// <param name="paper"></param>
         public abstract void Draw(Graphics paper);
 
+        /// <summary>
+        /// an abstract method used for evaluating circuit each gate will call on this method
+        /// with slight variations to represent the functions of difrent gates
+        /// </summary>
+        /// <returns></returns>
         public abstract bool Evaluate();
 
+        /// <summary>
+        /// abstract method used to clone seperate gates
+        /// </summary>
+        /// <returns></returns>
         public abstract Elements Clone();
 
 
