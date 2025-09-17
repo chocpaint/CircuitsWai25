@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="NotGate.cs" />
     <Compile Include="OrGate.cs" />
+    <Compile Include="OutpuLamp.cs" />
     <Compile Include="Pin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
