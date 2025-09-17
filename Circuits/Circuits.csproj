@@ -182,5 +182,17 @@
   <ItemGroup>
     <None Include="Resources\OutputOff.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InputIcon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InputIcon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InputOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InputOn.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
