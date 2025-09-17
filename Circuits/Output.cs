@@ -27,9 +27,9 @@ namespace Circuits
         public Output(int x, int y)
             : base(x, y)
         {
-            //add pins to gate
+            //add pins to output
             pins.Add(new Pin(this, true, 30));
-            //move the gate and the pins to the position passed in
+            //move the output and the pins to the position passed in
             MoveTo(x, y);
         }
         /// <summary>
@@ -64,7 +64,7 @@ namespace Circuits
         }
 
         /// <summary>
-        /// clone the gate.
+        /// clone the output.
         /// </summary>
         /// <returns></returns>
         public override Elements Clone()
@@ -86,7 +86,7 @@ namespace Circuits
             //Note: You can also use the images that have been imported into the project if you wish,
             //      using the code below.  You will need to space the pins out a bit more in the constructor.
             //      There are provided images for the other gates and selected versions of the gates as well.
-            paper.DrawImage(imgToDraw, Left, Top,); // with resource img W/H to draw correct size, to correlate to mouse boundary box and pin positions correctly
+            paper.DrawImage(imgToDraw, Left, Top,Width, Height); // with resource img W/H to draw correct size, to correlate to mouse boundary box and pin positions correctly
         }
 
     }
