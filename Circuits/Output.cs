@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Circuits
 {
-    internal class OutputLamp : Elements
+    internal class Output : Elements
     {
 
 
 
 
-        public OutputLamp(int x, int y)
+        public Output(int x, int y)
             : base(x, y)
         {
             //add pins to gate

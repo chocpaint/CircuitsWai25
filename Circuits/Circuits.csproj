@@ -70,10 +70,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="InputSources.cs" />
+    <Compile Include="Input.cs" />
     <Compile Include="NotGate.cs" />
     <Compile Include="OrGate.cs" />
-    <Compile Include="OutputLamp.cs" />
+    <Compile Include="Output.cs" />
     <Compile Include="Pin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
