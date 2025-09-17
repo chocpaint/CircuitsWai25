@@ -161,31 +161,70 @@ namespace Circuits
             currentY = 0;
         }
 
-        /// <summary>
-        /// This will create a new And gate.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
+        // add input button onclick. adds input item to cursor for user to place.
+        private void toolStripButtonINPUT_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // add output button onclick. adds output item to cursor for user to place.
+        private void toolStripButtonOUTPUT_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        // add AND gate button onclick. adds AND gate to cursor for user to place.
         private void toolStripButtonAnd_Click(object sender, EventArgs e)
         {
             newGate = new AndGate(0, 0);
         }
 
+
+        // add OR gate button onclick. adds OR gate to cursor for user to place.
         private void toolStripButtonOr_Click(object sender, EventArgs e)
         {
             newGate = new OrGate(0, 0);
         }
 
+
+        // add NOT gate button onclick. adds NOT gate to cursor for user to place.
         private void toolStripButtonNot_Click(object sender, EventArgs e)
         {
             newGate = new NotGate(0, 0);
         }
 
-        /// <summary>
-        /// Redraws all the graphics for the current circuit.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
+        // copy button onclick. _
+        private void toolStripButtonCOPY_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        // evaluate (?) button onclick. _
+        private void toolStripButtonEVALUATE_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        // start compound button onclick. _
+        private void toolStripButtonSTARTC_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        // end compound button onclick. _
+        private void toolStripButtonENDC_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        // Redraws all the graphics for the current circuit.
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             //Draw all of the gates
@@ -220,12 +259,6 @@ namespace Circuits
         {
             Application.Exit(); // kill app
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
 
 
         /// <summary>
