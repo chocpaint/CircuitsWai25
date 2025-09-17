@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace Circuits
 {
     /// <summary>
-    /// This class implements an AND gate with two inputs
-    /// and one output.
+    /// This class implements a NOT gate with one input and one output.
     /// </summary>
     public class NotGate : Elements
     {
@@ -21,7 +20,8 @@ namespace Circuits
         protected static int WIDTH = ResImg.Width;
         protected static int HEIGHT = ResImg.Height;
         protected const int GAP = 10; // spacing for pins
-        protected bool isOn = false;
+        protected bool isOn = false; // active state
+        
         // var overrides
         protected override int Width => WIDTH;
         protected override int Height => HEIGHT;
@@ -30,8 +30,7 @@ namespace Circuits
         // initialises the Gate
         public NotGate(int x, int y) : base(x, y)
         {
-            // add 2 input pins
-            pins.Add(new Pin(this, true, 20));
+            // add 1 input pin
             pins.Add(new Pin(this, true, 20));
             // add 1 output pin
             pins.Add(new Pin(this, false, 20));
@@ -65,13 +64,11 @@ namespace Circuits
             // debugging message
             Console.WriteLine("pins = " + pins.Count);
 
-            // more accurate drawing points for pins
-            pins[0].X = x - GAP;
-            pins[0].Y = y + HEIGHT / 2 - GAP;
-            pins[1].X = x - GAP;
-            pins[1].Y = y + HEIGHT / 2 + GAP;
-            pins[2].X = x + WIDTH + GAP;
-            pins[2].Y = y + HEIGHT / 2;
+            // pins placement
+            pins[0].X = x - GAP; // one in pin on center left 
+            pins[0].Y = y + HEIGHT / 2;
+            pins[1].X = x + WIDTH + GAP; // one out pin on center right
+            pins[1].Y = y + HEIGHT / 2;
         }
 
         // evaluate override method
