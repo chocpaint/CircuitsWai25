@@ -11,8 +11,8 @@ namespace Circuits
     public class Compound : Elements
     {
         // set images
-        protected static Image ResImg = Properties.Resources.AndGate,OrGate,NotGate,InputOn,OutputOn;
-        protected static Image ResImgSelect = Properties.Resources.AndGateSelected,OrGateSelected,NotGateSelected,InputOff,OutputOff;
+        protected static Image ResImg = Properties.Resources.AndGate, OrGate, NotGate, InputOn, OutputOn;
+        protected static Image ResImgSelect = Properties.Resources.AndGateSelected, OrGateSelected, NotGateSelected, InputOff, OutputOff;
         // image dependant sizing/spacing
         protected static int WIDTH = ResImg.Width;
         protected static int HEIGHT = ResImg.Height;
@@ -21,6 +21,7 @@ namespace Circuits
         // var overrides
         protected override int Width => WIDTH;
         protected override int Height => HEIGHT;
+
         protected List<Elements> gates;
         /// <summary>
         /// Initializes a compound gate object
@@ -42,6 +43,13 @@ namespace Circuits
             get { return gates; }
         }
         /// <summary>
+        /// This method overrides the moveto method to move each individual gate in the
+        /// compound list.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+
+        /// <summary>
         /// This method overrides the draw method and draws each gate
         /// </summary>
         /// <param name="paper"></param>
@@ -62,19 +70,16 @@ namespace Circuits
 
             if (g.Left < Left)
             {
-                left = g.Left;        
+
+                left = g.Left;
+
             }
+
             if (g.Top < Top)
-            { 
+            {
                 top = g.Top;
             }
         }
-        /// <summary>
-        /// This method overrides the moveto method to move each individual gate in the
-        /// compound list.
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
         public override void MoveTo(int x, int y)
         {
             if (gates.Count == 0) return;
@@ -92,9 +97,11 @@ namespace Circuits
             {
                 gate.MoveTo(gate.Left + distx, gate.Top + disty);
             }
+
             // Update the compound gate's position to match
             left = x;
             top = y;
+
         }
         /// <summary>
         /// This method ovverides the selected property for each gate in the
@@ -136,7 +143,7 @@ namespace Circuits
         /// <returns></returns>
         public override Elements Clone()
         {
-            return new Compound(0, 0);  
+            return new Compound(0, 0);
         }
         /// <summary>
         /// this method should evaluate the compoud gate by using
@@ -156,5 +163,6 @@ namespace Circuits
             }
             return false;
         }
+
     }
 }
