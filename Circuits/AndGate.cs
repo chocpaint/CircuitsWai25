@@ -21,7 +21,7 @@ namespace Circuits
         protected static int WIDTH = ResImg.Width;
         protected static int HEIGHT = ResImg.Height;
         protected const int GAP = 10; // spacing for pins
-
+        protected bool isOn = false;
         // var overrides
         protected override int Width => WIDTH;
         protected override int Height => HEIGHT;
@@ -85,8 +85,8 @@ namespace Circuits
             else
             {
                 //change is on to last gates evaluate value.
-                Elements gateA = pins[0].InputWire.FromPin.Owner;
-                isOn = gateA.Evaluate();
+                Elements AndGate = pins[0].InputWire.FromPin.Owner;
+                isOn = AndGate.Evaluate();
                 return isOn;
             }
         }

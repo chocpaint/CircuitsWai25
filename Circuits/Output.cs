@@ -51,9 +51,9 @@ namespace Circuits
             }
             else
             {
-                //change is on to last gates evaluate value.
-                Elements gateA = pins[0].InputWire.FromPin.Owner;
-                isOn = gateA.Evaluate();
+                
+                Elements Output = pins[0].InputWire.FromPin.Owner;
+                isOn = Output.Evaluate();
                 return isOn;
             }
         }
