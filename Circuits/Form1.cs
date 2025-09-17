@@ -15,56 +15,44 @@ namespace Circuits
     /// The main GUI for the COMPX102 digital circuits editor.
     /// This has a toolbar, containing buttons called buttonAnd, buttonOr, etc.
     /// The contents of the circuit are drawn directly onto the form.
-    /// 
     /// </summary>
     public partial class Form1 : Form
     {
 
-        //====================================================================================================================================================================================
-        //                  Lists
-        //====================================================================================================================================================================================
-        /// <summary>
-        /// The set of gates in the circuit
-        /// </summary>
+//====================================================================================================================================================================================
+//                  Lists
+//====================================================================================================================================================================================
+        // the set of gates in the circuit
         protected List<Elements> listElements = new List<Elements>();
-        /// <summary>
-        /// The gates to remove from gateslist for a compound gate
-        /// </summary>
+        // the gates to remove from gateslist for a compound gate
         protected List<Elements> removeList = new List<Elements>();
-        /// <summary>
-        /// The set of connector wires in the circuit
-        /// </summary>
+        // the set of connector wires in the circuit
         protected List<Wire> wiresList = new List<Wire>();
-        /// <summary>
-        /// A list of selected gates
-        /// </summary>
+        // a list of selected gates
         protected List<Elements> currentGate = new List<Elements>();
 
-        //====================================================================================================================================================================================
-        //                  Variables
-        //====================================================================================================================================================================================
 
-        // The (x,y) mouse position of the last MouseDown event.
+//====================================================================================================================================================================================
+//                  Variables
+//====================================================================================================================================================================================
+        // the (x,y) mouse position of the last MouseDown event.
         protected int startX, startY;
-        // If this is non-null, we are inserting a wire by
-        // dragging the mouse from startPin to some output Pin.
+        // if this is non-null, we are inserting a wire by dragging the mouse from startPin to some output Pin.
         protected Pin startPin = null;
-        // The (x,y) position of the current gate, just before we started dragging it.
+        // the (x,y) position of the current gate, just before we started dragging it.
         protected int currentX, currentY;
-        // The currently selected gate, or null if no gate is selected.
+        // the currently selected gate, or null if no gate is selected.
         protected Elements current = null;
-        // The new gate that is about to be inserted into the circuit
+        // the new gate that is about to be inserted into the circuit
         protected Elements newElement = null;
         // a temporary variable used to hold compund gates on initiation
         protected Compound newCompound = null;
 
 
-
 //====================================================================================================================================================================================
 //                  METHODS
 //====================================================================================================================================================================================
-        // Finds the pin that is close to (x,y), or returns
-        // null if there are no pins close to the position.
+        // Finds the pin that is close to (x,y), or returns null if there are no pins close.
         // <returns>The pin that has been selected</returns>
         public Pin findPin(int x, int y)
         {
@@ -79,32 +67,36 @@ namespace Circuits
             return null;
         }
 
+        // initialises the form
         public Form1()
         {
             InitializeComponent();
             DoubleBuffered = true;
         }
 
-        // Redraws all the graphics for the current circuit.
+        // redraws all the graphics for the current circuit.
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            //Draw all of the gates
+            // draw all of the gates
             foreach (Elements g in listElements)
             {
                 g.Draw(e.Graphics);
             }
-            //Draw all of the wires
+            // draw all of the wires
             foreach (Wire w in wiresList)
             {
                 w.Draw(e.Graphics);
             }
 
+            // if we are inserting a wire, draw the wire from startPin to current mouse position
             if (startPin != null)
             {
                 e.Graphics.DrawLine(Pens.White,
                     startPin.X, startPin.Y,
                     currentX, currentY);
             }
+
+            // if we are dragging a gate, draw it at its new position
             if (newElement != null)
             {
                 // show the gate that we are dragging into the circuit
@@ -117,7 +109,7 @@ namespace Circuits
 //====================================================================================================================================================================================
 //                  MOUSE EVENTS
 //====================================================================================================================================================================================
-        // Handles all events when the mouse is moving.
+        // handles all events when the mouse is moving.
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
             if (startPin != null)
@@ -141,7 +133,7 @@ namespace Circuits
             }
         }
 
-        // Handles all events when the mouse button is released.
+        // handles all events when the mouse button is released.
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             if (startPin != null)
@@ -183,14 +175,14 @@ namespace Circuits
                 startPin = null;
                 this.Invalidate();
             }
-            // We have finished moving/dragging
+            // finished moving/dragging
             startX = -1;
             startY = -1;
             currentX = 0;
             currentY = 0;
         }
 
-        // Handles events while the mouse button is pressed down.
+        // handles events while the mouse button is pressed down.
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             if (current == null)
@@ -208,25 +200,21 @@ namespace Circuits
             }
         }
 
-        // Handles all events when a mouse is clicked in the form.
+        // handles all events when a mouse is clicked in the form.
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
             // check if a gate is currently selected
             if (current != null)
             {
-                //allow compound start button to select multiple gates
+                // allow compound start button to select multiple gates
                 if (newCompound == null)
                 {
                     current.Selected = false;
                 }
-                //current = null;
-                //this.Invalidate();
-                // unselect the selected gate
-                //current.Selected = false;
                 current = null;
                 this.Invalidate();
             }
-            // if we are inserting a new gate
+            // 
             if (newElement != null)
             {
                 newElement.MoveTo(e.X, e.Y);
@@ -244,11 +232,13 @@ namespace Circuits
                         g.Selected = true;
                         current = g;
 
+                        // toggle input gate if clicked
                         if (g is Input inputGate)
                         {
                             inputGate.Toggle();
                         }
 
+                        // 
                         if (newCompound != null)
                         {
                             newCompound.AddGate(g);
@@ -300,7 +290,7 @@ namespace Circuits
         }
 
 
-        // copy button onclick. _
+        // copy button onclick. call relevant clone method to copy selected element.
         private void toolStripButtonCOPY_Click(object sender, EventArgs e)
         {
             foreach (Elements g in listElements)
@@ -313,7 +303,7 @@ namespace Circuits
         }
 
 
-        // evaluate (?) button onclick. _
+        // evaluate (?) button onclick. calls evaluate method to simulate the circuit.
         private void toolStripButtonEVALUATE_Click(object sender, EventArgs e)
         {
             foreach (Elements g in listElements)
@@ -328,19 +318,18 @@ namespace Circuits
         }
 
 
-        // start compound button onclick. _
+        // start compound button onclick. starts the compound elements creation process.
         private void toolStripButtonSTARTC_Click(object sender, EventArgs e)
         {
             newCompound = new Compound(this.Width, this.Height);
         }
 
 
-        // end compound button onclick. _
+        // end compound button onclick. ends the compound elements creation process.
         private void toolStripButtonENDC_Click(object sender, EventArgs e)
         {
-
             current = null;
-            //Track gates to remove from gateslist and currentlist
+            // track gates to remove from gateslist and currentlist
             foreach (Elements g in removeList)
             {
                 if (listElements.Contains(g))
@@ -362,7 +351,7 @@ namespace Circuits
                     g.Selected = false;
                 }
             }
-            //make newgate the compound gate
+            // make new element the compound elements
             newElement = newCompound;
             newCompound = null;
         }
@@ -376,9 +365,9 @@ namespace Circuits
 
     }
 }
-// TREY WUZ'ERE
-// key wordis was as Himothy has taken over. they call me Himothy for i am the HIM - regards Tama
-
+// TREY WUZ 'ERE
+//  - regards Tama
+// I'm going to commit unspeakable acts -T
 
 
 //1. Is it a better idea to fully document the Gate class or the AndGate
