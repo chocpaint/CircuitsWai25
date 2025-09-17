@@ -72,7 +72,11 @@ namespace Circuits
             get { return pins; }
         }
 
-
+        public virtual bool Selected
+        {
+            get { return selected; }
+            set { selected = value; }
+        }
 
 
         /// <summary>
