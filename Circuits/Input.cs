@@ -48,7 +48,7 @@ namespace Circuits
         // overides the draw method in Elements class, uses images for selected input, switches the input on when selected
         public override void Draw(Graphics paper)
         {
-            Image imgToDraw = selected // using ternary for swapping imgs based on clicked on status
+            Image imgToDraw = _selected // using ternary for swapping imgs based on clicked on status
                 ? ResImgSelect  // selected alternate image
                 : ResImg;       // normal image
 

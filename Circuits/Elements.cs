@@ -13,7 +13,7 @@ namespace Circuits
         protected int left; // left side of the gate
         protected int top; // top side of the gate
         protected List<Pin> pins = new List<Pin>(); // pins list
-        protected bool selected = false; // selected state
+        protected bool _selected = false; // selected state
 
 
         // initialise an element object (public)
@@ -32,8 +32,8 @@ namespace Circuits
         // selected bool
         public virtual bool Selected
         {
-            get { return selected; }
-            set { selected = value; }
+            get { return _selected; }
+            set { _selected = value; }
         }
 
 
