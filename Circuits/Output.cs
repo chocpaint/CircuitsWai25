@@ -9,20 +9,20 @@ namespace Circuits
 {
     internal class Output : Elements
     {
+        // set images
+        protected static Image ResImgOn = Properties.Resources.OutputOn;
+        protected static Image ResImgOff = Properties.Resources.OutputOff;
+
         // image dependant sizing/spacing
-        protected static int WIDTH = ResImg.Width;
-        protected static int HEIGHT = ResImg.Height;
-        // length of the connector legs sticking out left and right
-        protected const int GAP = 10;
-        protected static Image ResImg = Properties.Resources.OutputOn;
-        protected static Image ResImgSelect = Properties.Resources.OutputOff;
+        protected static int WIDTH = ResImgOn.Width;
+        protected static int HEIGHT = ResImgOn.Height;
+        protected const int GAP = 10; // spacing for pins
+        protected bool isOn = false; // active state
 
         // var overrides
         protected override int Width => WIDTH;
         protected override int Height => HEIGHT;
 
-
-        protected bool isOn = false;
 
         public Output(int x, int y)
             : base(x, y)
