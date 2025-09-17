@@ -16,10 +16,10 @@ namespace Circuits
         protected bool _selected = false; // selected state
 
 
-        // initialise an element object (public)
+        // constructor
         public Elements(int x, int y)
         {
-            
+            // hello world
         }
 
 

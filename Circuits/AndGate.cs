@@ -74,21 +74,12 @@ namespace Circuits
             pins[2].Y = y + HEIGHT / 2;
         }
 
-        // evaluate override method
+        // evaluate override method with and gate logic
         public override bool Evaluate()
         {
-            //check if pin has connection
-            if (pins[0].InputWire == null)
-            {
-                return false;
-            }
-            else
-            {
-                //change is on to last gates evaluate value.
-                Elements AndGate = pins[0].InputWire.FromPin.Owner;
-                isOn = AndGate.Evaluate();
-                return isOn;
-            }
+            bool a = pins[0].InputWire?.FromPin.Owner.Evaluate() ?? false;
+            bool b = pins[1].InputWire?.FromPin.Owner.Evaluate() ?? false;
+            return a && b;
         }
 
         // clone override method
