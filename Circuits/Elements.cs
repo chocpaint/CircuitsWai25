@@ -50,7 +50,7 @@ namespace Circuits
         }
 
 
-        // moving gate event
+        // moving element event
         public virtual void MoveTo(int x, int y)
         {
             left = x;
