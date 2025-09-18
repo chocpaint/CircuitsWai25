@@ -20,7 +20,7 @@ namespace Circuits
         // image dependant sizing/spacing
         protected static int WIDTH = ResImg.Width;
         protected static int HEIGHT = ResImg.Height;
-        protected const int GAP = 10; // spacing for pins
+        protected const int GAP = 8; // spacing for pins
         protected bool isOn = false; // active state
         
         // var overrides

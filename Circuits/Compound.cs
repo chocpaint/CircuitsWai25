@@ -119,7 +119,20 @@ namespace Circuits
             }
             return false;
         }
-        
+
+        // find element at override method to return the element at the mouse position
+        public override Elements FindElementAt(int x, int y)
+        {
+            foreach (Elements g in Gates)
+            {
+                Elements found = g.FindElementAt(x, y);
+                if (found != null)
+                    return found;
+            }
+            // If no child matches, fall back to compound itself
+            return base.FindElementAt(x, y);
+        }
+
         // clone the compound gate [DOES NOT WORK]
         public override Elements Clone()
         {
@@ -129,16 +142,23 @@ namespace Circuits
         // evaluate override method to perform individual logic operations of elements in the compound list
         public override bool Evaluate()
         {
-            foreach (Elements gate in gates)
+            bool result = false;
+
+            // for each element in compound, evaluate it
+            foreach (Elements g in Gates)
             {
-                // check if gate should start reaction of evaluate calls
-                if (gate is Output)
+                if (g is Output outputGate)
                 {
-                    return gate.Evaluate();
+                    result |= outputGate.Evaluate(); // OR them if multiple outputs
                 }
-                return false;
+                else
+                {
+                    g.Evaluate(); // just trigger evaluate for other gates
+                }
             }
-            return false;
+            return result;
+
+
         }
 
     }
