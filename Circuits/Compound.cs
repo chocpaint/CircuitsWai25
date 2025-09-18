@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Circuits
 {
+    // github.com/chocpaint/CircuitsWai25 
     public class Compound : Elements
     {
         // set images

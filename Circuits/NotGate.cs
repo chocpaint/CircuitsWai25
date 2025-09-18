@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Circuits
 {
     /// <summary>
+    /// github.com/chocpaint/CircuitsWai25 
     /// This class implements a NOT gate with one input and one output.
     /// </summary>
     public class NotGate : Elements

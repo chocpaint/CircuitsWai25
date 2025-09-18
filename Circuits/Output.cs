@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Circuits
 {
+    // github.com/chocpaint/CircuitsWai25 
     internal class Output : Elements
     {
         // set images

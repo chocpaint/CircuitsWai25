@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Circuits
 {
     /// <summary>
+    /// github.com/chocpaint/CircuitsWai25 
     /// This class implements an OR gate with two inputs and one output.
     /// </summary>
     public class OrGate : Elements

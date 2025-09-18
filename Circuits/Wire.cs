@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Circuits
 {
     /// <summary>
+    /// github.com/chocpaint/CircuitsWai25 
     /// NO NEED TO CHANGE ANYTHING HERE
     /// A wire connects between two pins.
     /// That is, it connects the output pin FromPin 

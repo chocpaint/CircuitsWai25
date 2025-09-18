@@ -12,6 +12,7 @@ using System.Windows.Forms;
 namespace Circuits
 {
     /// <summary>
+    /// github.com/chocpaint/CircuitsWai25 
     /// The main GUI for the COMPX102 digital circuits editor.
     /// This has a toolbar, containing buttons called buttonAnd, buttonOr, etc.
     /// The contents of the circuit are drawn directly onto the form.
@@ -396,5 +397,7 @@ namespace Circuits
 //Q4) What would happen in your program if one of the gates added to your
 //Compound Gate is another Compound Gate? Is your design robust    
 //enough to cope with this situation?
+
+
 
 
