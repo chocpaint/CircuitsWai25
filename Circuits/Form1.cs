@@ -207,14 +207,12 @@ namespace Circuits
             if (current != null)
             {
                 // allow compound start button to select multiple gates
-                if (newCompound == null)
-                {
-                    current.Selected = false;
-                }
+                if (newCompound == null) current.Selected = false;
                 current = null;
                 this.Invalidate();
             }
-            // 
+
+            // placing new element
             if (newElement != null)
             {
                 newElement.MoveTo(e.X, e.Y);
@@ -222,30 +220,32 @@ namespace Circuits
                 newElement = null;
                 this.Invalidate();
             }
+            
             else
             {
-                // search for the first gate under the mouse position
+                // search for the first element under the mouse position
                 foreach (Elements g in listElements)
                 {
-                    if (g.IsMouseOn(e.X, e.Y))
+                    Elements found = g.FindElementAt(e.X, e.Y); // use method from elements class
+                    if (found != null)
                     {
-                        g.Selected = true;
-                        current = g;
+                        found.Selected = true;
+                        current = found;
 
-                        // toggle input gate if clicked
-                        if (g is Input inputGate)
+                        // toggle input element if clicked
+                        if (found is Input inputGate)
                         {
                             inputGate.Toggle();
                         }
 
-                        // 
+                        // if compound gate creation is active, add selected gate to compound list
                         if (newCompound != null)
                         {
                             newCompound.AddGate(g);
                             removeList.Add(g);
                         }
 
-                        this.Invalidate();
+                        this.Invalidate(); // cause the form to be redrawn
                         break;
                     }
                 }
@@ -314,7 +314,18 @@ namespace Circuits
                     Console.WriteLine("Output evaluated to: " + result);
                 }
             }
-            this.Invalidate(); // redraw form with updated on/off images
+            this.Invalidate(); // redraw form with updated on/off outputs
+        }
+        // evaluate looping through all elements and sub elements recursively to account for compound gates
+        private void EvaluateRecursive(Elements element)
+        {
+            if (element is Output outputGate) outputGate.Evaluate();
+            
+            else if (element is Compound compound)
+            {
+                foreach (Elements sub in compound.Gates) EvaluateRecursive(sub);
+            }
+            else element.Evaluate();
         }
 
 

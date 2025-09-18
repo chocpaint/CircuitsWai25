@@ -36,11 +36,9 @@ namespace Circuits
             set { _selected = value; }
         }
 
-
         // W/H declaration, used in subclasses
         protected abstract int Width { get; }
         protected abstract int Height { get; }
-
 
         // mouse hovering bool
         public virtual bool IsMouseOn(int x, int y)
@@ -49,12 +47,17 @@ namespace Circuits
                 && top <= y && y < top + Height;
         }
 
-
         // moving element event
         public virtual void MoveTo(int x, int y)
         {
             left = x;
             top = y;
+        }
+
+        // check if mouse is on element and return element if true
+        public virtual Elements FindElementAt(int x, int y)
+        {
+            return IsMouseOn(x, y) ? this : null;
         }
 
 
