@@ -17,7 +17,7 @@ namespace Circuits
         // image dependant sizing/spacing
         protected static int WIDTH = ResImgOff.Width;
         protected static int HEIGHT = ResImgOff.Height;
-        protected const int GAP = 10; // spacing for pins
+        protected const int GAP = 3; // spacing for pins
         protected bool isOn = false; // active state
 
         // var overrides
@@ -45,7 +45,7 @@ namespace Circuits
         public override void MoveTo(int x, int y)
         {
             base.MoveTo(x, y);
-            pins[0].X = x + WIDTH;
+            pins[0].X = x + WIDTH+GAP;
             pins[0].Y = y + HEIGHT/2;
         }
 
